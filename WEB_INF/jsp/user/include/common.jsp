@@ -31,7 +31,7 @@ String navId = request.getParameter("navId"); // 상단 메뉴의 메뉴 위치 
     <link rel="stylesheet" href="<%=pathBase%>/css/vendors/swiper/swiper-bundle.min.css">
     
 
-    <link rel="stylesheet" href="<%=pathBase%>/css/user/compile/layout.css">
+    <link rel="stylesheet" href="<%=pathBase%>/css/user/compile/style.css">
     <% if(cssLinks != null ) { %>
 
         <% for(String link : cssLinks ) { %>

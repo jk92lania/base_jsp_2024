@@ -1,0 +1,374 @@
+// 공통 묶음 스타일 => mixin
+
+@mixin mobileMin {
+    @media only screen and (max-width: px($sizeMinMobile)) {
+        @content;
+    }
+}
+@mixin mobile {
+    @media only screen and (max-width: px($sizeMobile)) {
+        @content;
+    }
+}
+@mixin mobileMax {
+    @media only screen and (max-width: px($sizeMaxMobile)) {
+        @content;
+    }
+}
+
+@mixin padMin {
+    @media only screen and (max-width: px($sizeMinPad)) {
+        @content;
+    }
+}
+@mixin pad {
+    @media only screen and (max-width: px($sizePad)) {
+        @content;
+    }
+}
+@mixin padMax {
+    @media only screen and (max-width: px($sizeMaxPad)) {
+        @content;
+    }
+}
+
+@mixin laptopMin {
+    @media only screen and (max-width: px($sizeMinLaptop)) {
+        @content;
+    }
+}
+@mixin laptop {
+    @media only screen and (max-width: px($sizeLaptop)) {
+        @content;
+    }
+}
+@mixin laptopMax {
+    @media only screen and (max-width: px($sizeMaxLaptop)) {
+        @content;
+    }
+}
+
+@mixin desktopMin {
+    @media only screen and (max-width: px($sizeDesktop)) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media only screen and (max-width: px($sizeDesktop)) {
+        @content;
+    }
+}
+@mixin desktopMax {
+    @media only screen and (max-width: px($sizeMaxDesktop)) {
+        @content;
+    }
+}
+
+
+// print 조건
+@mixin print {
+    @media only print {
+        @content;
+    }
+}
+
+// 라운드된 네모
+@mixin square-wrap(
+    $radius: null,
+    $border-width: 0,
+    $border-color: #000,
+    $fill-color: null,
+    $font-color: #000
+    ) {
+        border-radius: $radius;
+        border: #{$border-width} solid $border-color;
+        background-color: $fill-color;
+        color: $font-color;
+    }
+    // //라운드된 네모
+
+
+// flex 한가운데 정렬
+@mixin flex-all-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+// //flex 한가운데 정렬
+
+// absolute center
+@mixin absolute-all-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+}
+// //absolute center
+
+// input 기본 스타일 초기화, 다른 스타일 입히기 쉽게
+@mixin input-clear-style() {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    border: none;
+    background: transparent;
+}
+// input 기본 스타일 초기화, 다른 스타일 입히기 쉽게
+
+
+// scrollbar 숨기기, 정책에 어긋나기 때문에 대체 추가 필요
+@mixin scroll-hidden {
+    scrollbar-color: transparent transparent;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    @content;
+}
+// scrollbar 숨기기
+
+// scroll custom 위한 base
+@mixin scroll-custom-basic {
+    scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
+    &::-webkit-scrollbar-track-piece {
+        background: transparent;
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 800px;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 800px;
+        background-color: transparent;
+    }
+    @content;
+}
+// scroll custom 위한 기본
+
+
+// scroll custom
+@mixin scroll-custom-gray( 
+    $color : rgba($color: #000000, $alpha: 0.4),
+    $w : 8px 
+    ) {    
+    scrollbar-color: $color transparent;
+
+    &::-webkit-scrollbar {
+        width: $w;
+    }
+    &::-webkit-scrollbar-track {
+        // background: transparent url('/theme/main/img/2023/common/bg_scrollbar.png') repeat !important;
+        box-shadow: none;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $color;
+    }
+    @content;
+}
+// scroll custom
+
+
+// line skip, 말줄임
+@mixin line-skip($limit : 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @if($limit == 1) {
+        white-space: nowrap;
+    } @else {
+        display: -webkit-box;
+        -webkit-line-clamp: $limit;
+        -webkit-box-orient: vertical;
+    }
+}
+// line skip, 말줄임
+
+
+
+// 버튼 - custom
+@mixin btnCustom ( 
+        $w: 130px,
+        $h: 50px,
+        $bgColor: #fff,
+        $round: 3px,
+        $borderW: 1px,
+        $borderColor: $colorMain,
+        $isHasArrow: false,
+        $gap: 17px,
+        $color : $colorMain, 
+        $isVerPad : false, 
+        $animation : false, 
+        $colorAfter: #fff,
+        $bgColorAfter: $colorMain,
+        $direction : none ) 
+    {
+    width: #{$w};
+    height: #{$h};
+    @include flex-all-center();
+    gap: #{$gap};
+    border-radius: #{$round};
+    border: #{$borderW} solid $borderColor;
+    background-color: $bgColor;
+    color: $color;
+    @if($animation == true) {
+        background: linear-gradient(to map-get($directionMap, $direction), transparent 50%, $bgColorAfter 50%) $direction;
+        background-size: calc(200% + #{$borderW} * 2);
+        transition: all .3s;
+    }
+    @if($isVerPad == true) {
+        @include pad {
+            width: round(#{$w} * 0.75);
+            height: round(#{$h} * 0.8);
+            gap: round(#{$gap} * 0.7);
+        }
+    }
+    &:hover {
+        @if($animation == true) {
+            border-color: $bgColorAfter;
+            background-position: map-get($directionMap, $direction);
+            color: $colorAfter;
+        }
+    }
+}
+
+
+// 스와이퍼 재생, 일시정지 버튼
+@mixin btnSwiperPlay ( $color : #fff ) {
+    position: relative;            
+    width: 30px;
+    height: 30px;               
+    &::before {
+        content: '';
+        position: absolute;
+        // left: 0;
+        // top: 0;
+        left: calc((100% + 6px) / 2 + 2px); /* (전체 + 가로 길이) / 2 */
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        width: 0;
+        height: 0;
+        background-color: transparent;
+        border-left: 9px solid $color;
+        border-top: 6px solid transparent;
+        border-right: 9px solid transparent;
+        border-bottom: 6px solid transparent;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        // right: 0;
+        // top: 0;
+        right: calc(50% - 2px / 2 - 2px * 2 / 2);  /* 중앙 - 서로간 거리 / 2 - 선두께의 총합 / 2 */
+        top: 50%;
+        transform: translate(50%, -50%);
+        display: none;
+        width: 2px;
+        // height: 100%;
+        height: 10px;
+        background-color: $color;
+    }
+    &.pause {
+        overflow: hidden;
+        &::before {
+            left: calc(50% - 2px / 2 - 2px * 2 / 2); /* 중앙 - 서로간 거리 / 2 - 선두께의 총합의 반 */
+            width: 2px;
+            // height: 100%;
+            height: 10px;
+            background-color: $color;
+            border: none;
+        }
+        &::after {
+            display: block;
+        }
+    }
+}
+
+
+// 느낌표 안내
+@mixin markExclamation($color : $colorMain) {
+    position: relative;
+    display: flex;
+    color: $color;
+    @if($color == gray) {
+        color: #666;
+    }
+    font-size: 15px;
+    line-height: 21px;
+    @include pad {
+        align-items: flex-start;
+        font-size: 13px;
+        line-height: 15px;
+    }
+
+    .icon {
+        position: relative;
+        display: block;
+        margin: 4px 4px 0 0;
+        @include pad {
+            margin-top: 2px;
+        }
+        
+        img {
+            @if($color == gray) {
+                content: url($path + '/images/user/pages/cultural/cultural_intro_precautions_icon_img01.svg');
+            }
+            position: relative;
+            display: block;
+            width: 15px;
+            height: 15px;
+            font-size: 0;
+            line-height: 0;
+            object-fit: contain;
+            @include pad {
+                width: 13px;
+                height: 13px;
+            }
+
+        }
+        // margin-top: -1.5px;
+    }
+    .txt {
+        color: $color;
+        @if($color == gray) {
+            color: #666;
+        }
+        font-size: 15px;
+        line-height: 21px;
+        @include pad {
+            font-size: 13px;
+            line-height: 15px;
+        }
+        > * {
+            display: block;
+            color: $color;
+            @if($color == gray) {
+                color: #666;
+            }
+            font-size: 15px;
+            line-height: 21px;
+            @include pad {
+                font-size: 13px;
+                line-height: 15px;
+            }
+        }
+        a {
+            color: $color;
+            @if($color == gray) {
+                color: #666;
+            }
+            font-size: 15px;
+            line-height: 21px;
+            @include pad {
+                font-size: 13px;
+                line-height: 15px;
+            }
+        }
+    }
+}

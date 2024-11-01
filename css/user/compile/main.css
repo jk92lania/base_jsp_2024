@@ -1,0 +1,20 @@
+.btn {
+  width: 130px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 17px;
+  border-radius: 3px;
+  border: 1px solid #CD201F;
+  background-color: #fff;
+  color: #CD201F;
+  background: linear-gradient(to left, transparent 50%, #CD201F 50%) right;
+  background-size: calc(200% + 1px * 2);
+  transition: all 0.3s;
+}
+.btn:hover {
+  border-color: #CD201F;
+  background-position: left;
+  color: #fff;
+}/*# sourceMappingURL=main.css.map */

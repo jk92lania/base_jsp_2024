@@ -1,0 +1,108 @@
+
+
+// 레이아웃 사이즈
+$sizeLayout : 1280;
+$sizeLayoutMax : 1920;
+
+// 반응형 크기
+
+$sizeMinMobile: round($sizeLayout * 0.35);
+$sizeMobile: round($sizeLayout * 0.40);
+$sizeMaxMobile: round($sizeLayout * 0.48);
+
+$sizeMinPad: round($sizeLayout * 0.53);
+$sizePad: round($sizeLayout * 0.60);
+$sizeMaxPad: round($sizeLayout * 0.66);
+
+$sizeMinLaptop: round($sizeLayout * 0.70);
+$sizeLaptop: $sizeLayout - 80;
+$sizeMaxLaptop: $sizeLayout;
+
+$sizeMinDesktop: $sizeLayout + 20;
+$sizeDesktop: round(1439 * 0.75);
+$sizeMaxDesktop: round($sizeLayoutMax * 0.82);
+
+
+// 폰트
+$fontsize : 16; // 16px, 16rem
+$pretendard : 'Pretendard';
+
+
+
+// 주컬러
+$colorBlack: #17140F;
+$colorMainBlack: $colorBlack;
+$colorRed: #CD201F;
+$colorRedMain: $colorRed;
+$colorMain: $colorRedMain;
+
+
+
+
+
+// main
+
+
+// 경로
+$path : '';
+
+
+
+// header
+$headerTopmenuH : 0;
+$headerMainmenuH : 86;
+
+$headerH : $headerTopmenuH + $headerMainmenuH;
+
+
+// nav 1차, 2차, n차메뉴 클래스 구분
+$navNames : '', 'sub', 'bottom', 'fourth';
+$navLinkH : 16;
+
+
+// sub banner
+$subbannerImgH : 450;
+
+// subnav
+$subnavH : 60;
+
+
+// 게시판 베이스 비율
+$boardBaseList : (
+    "num": "0 0 90px",
+    "tit": "4 4 0",
+    "date": "1 1 0",
+);
+
+
+
+// 게시판 pagenavigation classname
+$pnavArr : 'first', 'prev', 'num', 'next', 'last';
+
+
+
+// boardga
+$boardgaCol : 4;
+$boardgaColLaptop : 3;
+$boardgaColPad : 2;
+$boardgaColMobile : 2;
+$boardgaGap : 40; // px
+$boardgaGapMobile : 15; // px
+
+// boardgf
+$boardgfCol : 3;
+$boardgfColLaptop : 2;
+$boardgfColPad : 2;
+$boardgfGap : 40; // px
+$boardgfGapPad : 20; // px
+$boardgfGapMobile : 15; // px
+
+
+
+// btn animation 방향 to, from
+$directionMap : (
+    right : left,
+    left : right,
+    bottom : top,
+    top : bottom
+);

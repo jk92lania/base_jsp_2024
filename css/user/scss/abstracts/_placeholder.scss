@@ -1,0 +1,67 @@
+
+// % 문자와 함께 사용
+// 함수나 변수를 사용하듯 내가 원하는 요소에 불러와서 사용할 수 있다.
+// 만들어 놓은 placeholder 선택자는 @extend를 통해 호출한다.
+
+
+// %sect-top {
+//     display: flex;
+//     align-items: flex-end;
+//     justify-content: space-between;
+//     justify-content: flex-start;
+//     padding-left: 30px;
+//     padding-right: 30px;
+//     gap: 20px;
+//     > *:nth-child(2) {
+//         margin-left: auto;
+//     }
+// }
+
+// base
+// %absolute-all-center {
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+//     display: block;
+// }
+
+// %flex-all-center {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+
+// %input-clear-style {
+//     appearance: none;
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+    
+//     border: none;
+//     background: transparent;
+// }
+
+// %scroll-custom-basic {
+//     scrollbar-color: transparent transparent;
+//     scrollbar-width: thin;
+//     &::-webkit-scrollbar {
+//         width: 0px;
+//         background: transparent;
+//     }
+//     &::-webkit-scrollbar-track-piece {
+//         background: transparent;
+//     }
+//     &::-webkit-scrollbar-track {
+//         border-radius: 800px;
+//         background-color: transparent;
+//     }
+//     &::-webkit-scrollbar-thumb {
+//         border-radius: 800px;
+//         background-color: transparent;
+//     }
+// }
+// base
+
+
+
+

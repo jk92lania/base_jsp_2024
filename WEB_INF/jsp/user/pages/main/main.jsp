@@ -154,6 +154,9 @@
 
         <%-- 내용 - ex youtube --%>
 		<section class="main-sect sect-youtube">
+			<div class="layout">
+				<button type="button" class="btn">button</button>
+			</div>
 		</section>
 
 
